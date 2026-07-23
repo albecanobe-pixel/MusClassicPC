@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mus — 4 Jugadores</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Mus</h1>
+      <div class="scoreboard">
+        <div class="team team-us">
+          <span class="team-label">Tú + Norte</span>
+          <span id="score-us" class="team-score">0</span>
+        </div>
+        <div class="round-info">
+          <span id="phase-label">Ronda 1</span>
+          <span id="status-text">Pulsa «Nueva mano» para empezar</span>
+        </div>
+        <div class="team team-them">
+          <span class="team-label">Este + Oeste</span>
+          <span id="score-them" class="team-score">0</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="table-area">
+      <div class="player-slot player-north" data-player="2">
+        <div class="player-info">
+          <span class="player-name">Norte (compañero)</span>
+          <span class="player-badge bot">Bot</span>
+        </div>
+        <div class="hand" id="hand-2"></div>
+      </div>
+
+      <div class="middle-row">
+        <div class="player-slot player-west" data-player="3">
+          <div class="player-info">
+            <span class="player-name">Oeste</span>
+            <span class="player-badge bot">Bot</span>
+          </div>
+          <div class="hand vertical" id="hand-3"></div>
+        </div>
+
+        <div class="center-panel">
+          <div class="deck-pile">
+            <div class="deck-stack"></div>
+            <span id="deck-count">40</span>
+          </div>
+          <div class="pot">
+            <span class="pot-label">Apuesta</span>
+            <span id="pot-value">0</span>
+          </div>
+          <div id="message-log" class="message-log"></div>
+        </div>
+
+        <div class="player-slot player-east" data-player="1">
+          <div class="player-info">
+            <span class="player-name">Este</span>
+            <span class="player-badge bot">Bot</span>
+          </div>
+          <div class="hand vertical" id="hand-1"></div>
+        </div>
+      </div>
+
+      <div class="player-slot player-south" data-player="0">
+        <div class="player-info">
+          <span class="player-name">Tú (Sur)</span>
+          <span class="player-badge human">Jugador</span>
+        </div>
+        <div class="hand" id="hand-0"></div>
+      </div>
+    </main>
+
+    <aside class="controls">
+      <section class="panel" id="panel-mus">
+        <h2>Fase Mus</h2>
+        <p class="hint">¿Quieres jugar esta mano o descartar cartas?</p>
+        <div class="btn-row">
+          <button id="btn-mus" class="btn btn-primary">Mus</button>
+          <button id="btn-no-mus" class="btn">No mus</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="panel-discard">
+        <h2>Cambio</h2>
+        <p class="hint">Selecciona cartas para cambiar (máx. 4) y confirma.</p>
+        <div class="btn-row">
+          <button id="btn-discard" class="btn btn-primary">Cambiar selección</button>
+          <button id="btn-keep" class="btn">Quedarme con todo</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="panel-bet">
+        <h2 id="bet-category">Grande</h2>
+        <p class="hint" id="bet-hint">Apuesta o pasa en esta categoría.</p>
+        <div class="btn-row wrap">
+          <button id="btn-envido" class="btn btn-primary">Envido (2)</button>
+          <button id="btn-doble" class="btn">Doble (4)</button>
+          <button id="btn-hacer" class="btn">Hacer</button>
+          <button id="btn-paso" class="btn">Paso</button>
+          <button id="btn-ordago" class="btn btn-danger">Órdago</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="panel-showdown">
+        <h2>Resultado</h2>
+        <div id="showdown-results"></div>
+        <button id="btn-next-hand" class="btn btn-primary full">Siguiente mano</button>
+      </section>
+
+      <section class="panel" id="panel-start">
+        <button id="btn-new-game" class="btn btn-primary full">Nueva partida</button>
+        <button id="btn-new-hand" class="btn full" disabled>Nueva mano</button>
+      </section>
+    </aside>
+  </div>
+
+  <script src="js/deck.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
