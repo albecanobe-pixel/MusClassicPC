@@ -34,11 +34,11 @@ export default class GameState {
         ];
 
         this.discards = [
-            [],
-            [],
-            [],
-            []
-        ];
+    null,
+    null,
+    null,
+    null
+];
 
         this.musVotes = [
             null,
